@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  drinking_game_mysql:
+    image: mysql:8.0.15
+    environment:
+      MYSQL_ROOT_PASSWORD: PYm%HI6SLffT
+      MYSQL_DATABASE: drinking_game_database
+      MYSQL_USER: drinking_game_user
+      MYSQL_PASSWORD: d$OzA@^v
+    ports:
+      - '3306:3306'
