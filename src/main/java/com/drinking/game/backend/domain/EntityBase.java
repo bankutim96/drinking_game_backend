@@ -1,5 +1,6 @@
 package com.drinking.game.backend.domain;
 
+import lombok.Getter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
@@ -8,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
+@Getter
 @MappedSuperclass
 public abstract class EntityBase implements Serializable {
 
@@ -15,5 +17,5 @@ public abstract class EntityBase implements Serializable {
     @Column(length = 36)
     @GeneratedValue(generator = "uuid_generator")
     @GenericGenerator(name = "uuid_generator", strategy = "org.hibernate.id.UUIDGenerator")
-    private String id;
+    protected String id;
 }
