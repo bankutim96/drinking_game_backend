@@ -4,9 +4,11 @@ import com.drinking.game.backend.domain.user.Role;
 import com.drinking.game.backend.domain.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 
 import java.time.LocalDate;
 
+@Getter
 @Builder
 @AllArgsConstructor
 public class UserDetailsDTO {
