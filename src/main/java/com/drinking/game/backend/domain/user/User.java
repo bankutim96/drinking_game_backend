@@ -1,0 +1,38 @@
+package com.drinking.game.backend.domain.user;
+
+import com.drinking.game.backend.domain.EntityBase;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
+import java.time.LocalDate;
+
+@Getter
+@Setter
+@Entity
+@NoArgsConstructor
+public class User extends EntityBase implements Serializable {
+
+    @Size(min = 6, max = 18)
+    @Column(unique = true, nullable = false)
+    private String username;
+
+    @Column(unique = true, nullable = false)
+    private String email;
+
+    @Size(min = 8, max = 24)
+    @Column(nullable = false)
+    private String password;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    private LocalDate dateOfBirth;
+}
