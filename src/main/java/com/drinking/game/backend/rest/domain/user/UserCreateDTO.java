@@ -1,4 +1,4 @@
-package com.drinking.game.backend.rest.domain;
+package com.drinking.game.backend.rest.domain.user;
 
 import com.drinking.game.backend.domain.user.Role;
 import com.drinking.game.backend.domain.user.User;

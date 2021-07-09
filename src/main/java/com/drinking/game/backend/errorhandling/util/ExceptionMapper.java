@@ -2,6 +2,7 @@ package com.drinking.game.backend.errorhandling.util;
 
 import com.drinking.game.backend.errorhandling.domain.GeneralErrorDTO;
 import com.drinking.game.backend.errorhandling.exception.ConflictException;
+import com.drinking.game.backend.errorhandling.exception.InvalidCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import java.util.Objects;
@@ -41,6 +42,14 @@ public class ExceptionMapper {
                 .errorCode(4090)
                 .errorMessage("CONFLICT_EXCEPTION")
                 .friendlyMassage(String.format(CONFLICT_TEMPLATE, ex.getDomainClass().getSimpleName()))
+                .build();
+    }
+
+    public static GeneralErrorDTO mapInvalidCredentialsException(InvalidCredentialsException ex) {
+        return GeneralErrorDTO.builder()
+                .errorCode(ex.getErrorCode().getCode())
+                .errorMessage(ex.getErrorCode().getMessage())
+                .friendlyMassage("Invalid username or password!")
                 .build();
     }
 }
