@@ -17,6 +17,7 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 public class User extends EntityBase implements Serializable {
 
     @Size(min = 6, max = 18)

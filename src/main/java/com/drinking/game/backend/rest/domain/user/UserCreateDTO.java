@@ -2,6 +2,8 @@ package com.drinking.game.backend.rest.domain.user;
 
 import com.drinking.game.backend.domain.user.Role;
 import com.drinking.game.backend.domain.user.User;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
 import javax.validation.constraints.NotNull;
@@ -9,6 +11,8 @@ import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Getter
+@Builder
+@AllArgsConstructor
 public class UserCreateDTO {
     @NotNull
     @Size(min = 6, max = 18)

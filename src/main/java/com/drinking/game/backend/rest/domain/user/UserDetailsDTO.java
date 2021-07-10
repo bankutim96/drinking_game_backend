@@ -4,6 +4,7 @@ import com.drinking.game.backend.domain.user.Role;
 import com.drinking.game.backend.domain.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.time.LocalDate;
@@ -11,6 +12,7 @@ import java.time.LocalDate;
 @Getter
 @Builder
 @AllArgsConstructor
+@EqualsAndHashCode
 public class UserDetailsDTO {
     private final String id;
     private final String username;
