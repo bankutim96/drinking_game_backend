@@ -19,10 +19,10 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringJUnitConfig
-public class UserServiceTest {
+class UserServiceTest {
 
     @Mock
     private UserRepository userRepository;
@@ -32,7 +32,7 @@ public class UserServiceTest {
     @InjectMocks
     private UserServiceImpl userService;
 
-    private ArgumentCaptor<User> userCaptor = ArgumentCaptor.forClass(User.class);
+    private final ArgumentCaptor<User> userCaptor = ArgumentCaptor.forClass(User.class);
 
     @Test
     void testCreateUserSuccess() {
@@ -54,6 +54,12 @@ public class UserServiceTest {
 
         assertEquals(expectedResult, actualResult);
         assertEquals(user, userCaptor.getValue());
+
+        verify(passwordEncoder).encode(userCreateDTO.getPassword());
+        verify(userRepository).save(any());
+
+        verifyNoMoreInteractions(passwordEncoder);
+        verifyNoMoreInteractions(userRepository);
     }
 
     @Test
@@ -68,5 +74,11 @@ public class UserServiceTest {
         when(userRepository.save(any())).thenThrow(DataIntegrityViolationException.class);
 
         assertThrows(ConflictException.class, () -> userService.createUser(userCreateDTO));
+
+        verify(passwordEncoder).encode(userCreateDTO.getPassword());
+        verify(userRepository).save(any());
+
+        verifyNoMoreInteractions(passwordEncoder);
+        verifyNoMoreInteractions(userRepository);
     }
 }
