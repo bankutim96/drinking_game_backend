@@ -18,8 +18,8 @@ public class TokenServiceImpl implements TokenService {
     @Value("${drinking_game.security.token.secret}")
     private String secretKey;
 
-    private static final String USERID_CLAIM = "userid";
-    private static final String ROLE_CLAIM = "role";
+    public static final String USERID_CLAIM = "userid";
+    public static final String ROLE_CLAIM = "role";
     private static final String TOKEN_ISSUER = "drinking_game";
 
     private static final String ACCESS_TOKEN_SUBJECT = "accesstoken";

@@ -3,6 +3,7 @@ package com.drinking.game.backend.errorhandling.util;
 import com.drinking.game.backend.errorhandling.domain.GeneralErrorDTO;
 import com.drinking.game.backend.errorhandling.exception.ConflictException;
 import com.drinking.game.backend.errorhandling.exception.InvalidCredentialsException;
+import com.drinking.game.backend.errorhandling.exception.InvalidTokenException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import java.util.Objects;
@@ -50,6 +51,14 @@ public class ExceptionMapper {
                 .errorCode(ex.getErrorCode().getCode())
                 .errorMessage(ex.getErrorCode().getMessage())
                 .friendlyMassage("Invalid username or password!")
+                .build();
+    }
+
+    public static GeneralErrorDTO mapInvalidTokenException(InvalidTokenException ex) {
+        return GeneralErrorDTO.builder()
+                .errorCode(ex.getErrorCode().getCode())
+                .errorMessage(ex.getErrorCode().getMessage())
+                .friendlyMassage("Given token is invalid or expired!")
                 .build();
     }
 }

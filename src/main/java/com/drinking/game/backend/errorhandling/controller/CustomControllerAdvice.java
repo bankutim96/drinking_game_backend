@@ -3,6 +3,7 @@ package com.drinking.game.backend.errorhandling.controller;
 import com.drinking.game.backend.errorhandling.domain.GeneralErrorDTO;
 import com.drinking.game.backend.errorhandling.exception.ConflictException;
 import com.drinking.game.backend.errorhandling.exception.InvalidCredentialsException;
+import com.drinking.game.backend.errorhandling.exception.InvalidTokenException;
 import com.drinking.game.backend.errorhandling.util.ExceptionMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -28,5 +29,10 @@ public class CustomControllerAdvice {
     @ExceptionHandler(InvalidCredentialsException.class)
     public ResponseEntity<GeneralErrorDTO> handleInvalidCredentialsException(InvalidCredentialsException ex) {
         return new ResponseEntity<>(ExceptionMapper.mapInvalidCredentialsException(ex), HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(InvalidTokenException.class)
+    public ResponseEntity<GeneralErrorDTO> handleInvalidTokenException(InvalidTokenException ex) {
+        return new ResponseEntity<>(ExceptionMapper.mapInvalidTokenException(ex), HttpStatus.FORBIDDEN);
     }
 }
