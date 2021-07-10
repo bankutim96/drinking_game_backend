@@ -2,23 +2,21 @@ package com.drinking.game.backend.rest.domain.user;
 
 import com.drinking.game.backend.domain.user.Role;
 import com.drinking.game.backend.domain.user.User;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Getter
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
 public class UserDetailsDTO {
-    private final String id;
-    private final String username;
-    private final String email;
-    private final Role role;
-    private final LocalDate dateOfBirth;
+    private String id;
+    private String username;
+    private String email;
+    private Role role;
+    private LocalDate dateOfBirth;
 
     public static UserDetailsDTO fromUser(User user) {
         return UserDetailsDTO.builder()

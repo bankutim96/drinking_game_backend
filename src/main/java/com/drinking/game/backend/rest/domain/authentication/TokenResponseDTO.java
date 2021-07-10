@@ -2,10 +2,12 @@ package com.drinking.game.backend.rest.domain.authentication;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
 @AllArgsConstructor
 public class TokenResponseDTO {
-    private final String accessToken;
-    private final String refreshToken;
+    private String accessToken;
+    private String refreshToken;
 }
