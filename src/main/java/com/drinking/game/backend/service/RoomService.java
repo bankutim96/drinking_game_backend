@@ -9,4 +9,6 @@ public interface RoomService {
     RoomCreateResponseDTO createRoom(RoomCreateRequestDTO request);
 
     RoomJoinResponseDTO joinRoom(RoomJoinRequestDTO request);
+
+    void quitCurrentRoom();
 }

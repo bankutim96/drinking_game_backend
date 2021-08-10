@@ -13,6 +13,6 @@ public class ErrorCodes {
 
     //New ErrorCodes
     public static final ErrorCode NO_USER_IN_CONTEXT = new ErrorCode(10100, "No user is currently logged in", HttpStatus.UNAUTHORIZED);
-    public static final ErrorCode ALREADY_IN_ROOM = new ErrorCode(10200, "User is already joined to another room", HttpStatus.METHOD_NOT_ALLOWED);
+    public static final ErrorCode ALREADY_IN_ROOM = new ErrorCode(10201, "User is already joined to another room", HttpStatus.METHOD_NOT_ALLOWED);
     public static final ErrorCode ROOM_NOT_FOUND = new ErrorCode(40401, "Room cannot be found", HttpStatus.NOT_FOUND);
 }

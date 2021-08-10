@@ -30,4 +30,10 @@ public class RoomController {
         var response = roomService.joinRoom(request);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+    @PutMapping("/quit")
+    public ResponseEntity<Void> quitRoom() {
+        roomService.quitCurrentRoom();
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

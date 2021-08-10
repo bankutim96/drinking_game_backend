@@ -6,7 +6,7 @@ import lombok.Getter;
 public enum RoomState {
     WAITING("WAITING"),
     ONGOING("ONGOING"),
-    CLOSED("CLOSED"),
+    CANCELED("CANCELED"),
     FINISHED("FINISHED");
 
     private final String value;

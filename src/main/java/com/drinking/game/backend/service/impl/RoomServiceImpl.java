@@ -63,12 +63,28 @@ public class RoomServiceImpl implements RoomService {
             throw new DrinkingGameException(ErrorCodes.ALREADY_IN_ROOM);
         }
 
-        Room room = roomRepository.findByJoinCode(request.getJoinCode())
+        var room = roomRepository.findByJoinCode(request.getJoinCode())
                 .orElseThrow(() -> new DrinkingGameException(ErrorCodes.ROOM_NOT_FOUND));
 
         user.setCurrentRoom(room);
         userRepository.save(user);
         return RoomJoinResponseDTO.fromRoom(room);
+    }
+
+    @Override
+    @Transactional
+    public void quitCurrentRoom() {
+        var user = authenticationFacade.getCurrentUser();
+        var room = user.getCurrentRoom();
+        if (room != null) {
+            if (room.getJoinedUsers().size() == 1) {
+                room.setState(room.getState() == RoomState.ONGOING ? RoomState.FINISHED : RoomState.CANCELED);
+                room.setClosedAt(LocalDateTime.now());
+                roomRepository.save(room);
+            }
+            user.setCurrentRoom(null);
+            userRepository.save(user);
+        }
     }
 
     private String generateName(String username) {
