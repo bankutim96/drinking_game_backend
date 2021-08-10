@@ -1,12 +1,10 @@
 package com.drinking.game.backend.domain.user;
 
 import com.drinking.game.backend.domain.EntityBase;
+import com.drinking.game.backend.domain.room.Room;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -35,4 +33,7 @@ public class User extends EntityBase implements Serializable {
     private Role role;
 
     private LocalDate dateOfBirth;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Room currentRoom;
 }
