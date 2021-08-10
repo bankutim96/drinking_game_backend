@@ -11,14 +11,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import java.util.Collection;
 import java.util.Collections;
 
 @Slf4j
-@Service
+@Component
 @RequiredArgsConstructor
 public class JwtTokenAuthenticationServiceImpl implements JwtTokenAuthenticationService {
 
