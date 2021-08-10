@@ -27,7 +27,7 @@ public class Room extends EntityBase implements Serializable {
     @Enumerated(EnumType.STRING)
     private RoomState state;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String joinCode;
 
     private LocalDateTime createdAt;

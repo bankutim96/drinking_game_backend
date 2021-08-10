@@ -8,6 +8,8 @@ import com.drinking.game.backend.repository.RoomRepository;
 import com.drinking.game.backend.repository.UserRepository;
 import com.drinking.game.backend.rest.domain.room.RoomCreateRequestDTO;
 import com.drinking.game.backend.rest.domain.room.RoomCreateResponseDTO;
+import com.drinking.game.backend.rest.domain.room.RoomJoinRequestDTO;
+import com.drinking.game.backend.rest.domain.room.RoomJoinResponseDTO;
 import com.drinking.game.backend.security.service.AuthenticationFacade;
 import com.drinking.game.backend.service.RoomService;
 import lombok.RequiredArgsConstructor;
@@ -52,6 +54,21 @@ public class RoomServiceImpl implements RoomService {
         userRepository.save(user);
 
         return RoomCreateResponseDTO.fromRoom(room);
+    }
+
+    @Override
+    public RoomJoinResponseDTO joinRoom(RoomJoinRequestDTO request) {
+        var user = authenticationFacade.getCurrentUser();
+        if (user.getCurrentRoom() != null) {
+            throw new DrinkingGameException(ErrorCodes.ALREADY_IN_ROOM);
+        }
+
+        Room room = roomRepository.findByJoinCode(request.getJoinCode())
+                .orElseThrow(() -> new DrinkingGameException(ErrorCodes.ROOM_NOT_FOUND));
+
+        user.setCurrentRoom(room);
+        userRepository.save(user);
+        return RoomJoinResponseDTO.fromRoom(room);
     }
 
     private String generateName(String username) {
