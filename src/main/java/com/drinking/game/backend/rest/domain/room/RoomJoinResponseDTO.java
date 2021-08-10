@@ -1,15 +1,13 @@
 package com.drinking.game.backend.rest.domain.room;
 
 import com.drinking.game.backend.domain.room.Room;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 public class RoomJoinResponseDTO {
     private String id;
     private String name;

@@ -1,6 +1,7 @@
 package com.drinking.game.backend.domain;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
 @Getter
+@Setter
 @MappedSuperclass
 public abstract class EntityBase implements Serializable {
 
